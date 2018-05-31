@@ -7,6 +7,7 @@ export default class App extends Component {
     
     state = {
       topic: '',
+      error: null,
       page: 1,
       perPage: 20,
       totalItems: 0,
@@ -18,8 +19,10 @@ export default class App extends Component {
 
       search({ topic }, { page, perPage })
         .then(({ items, totalItems }) => {
-          this.setState({ items, totalItems });
+          this.setState({ items, totalItems, error: null });
           console.log('ITEMS!!!', items);
+        }, error => {
+          this.setState({ error });
         });
     };
 
@@ -37,7 +40,7 @@ export default class App extends Component {
             <Search onSearch={this.handleSearch}/>
           </header>
           <main>
-            <Books/>
+            <Books items={items}/>
           </main>
         </div>
       );
