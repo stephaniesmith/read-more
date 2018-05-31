@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Book extends Component {
     
   render() {
-    const { volumeInfo } = this.prop.book;
+    const { volumeInfo } = this.props.book;
 
     return (
       <li>{volumeInfo.title}</li>

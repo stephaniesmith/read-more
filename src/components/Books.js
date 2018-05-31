@@ -5,7 +5,7 @@ import Book from './Book';
 export default class Books extends Component {
 
   render() {
-    const { items } = this.prop;
+    const { items } = this.props;
 
     return (
       <ul>
