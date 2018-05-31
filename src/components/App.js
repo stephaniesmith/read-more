@@ -9,7 +9,7 @@ export default class App extends Component {
                 <Search/>
             </header>
             <main>
-                <Articles/>
+                <Books/>
             </main>
         </div>
       );
