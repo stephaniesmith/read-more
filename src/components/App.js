@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { search } from '../services/booksApi'
 import Search from './Search';
 import Books from './Books';
+import Paging from './Paging';
+
 
 export default class App extends Component {
     
@@ -49,6 +51,7 @@ export default class App extends Component {
               {error && <div>Error: {error.message}</div>}
               <p>{topic}</p>
             </section>
+            <Paging/>
             <Books items={items}/>
           </main>
         </div>
