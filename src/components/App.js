@@ -45,14 +45,14 @@ export default class App extends Component {
       return (
         <div>
           <header>
-            <p>Find a Book</p>
+            <h1>Find a Book</h1>
             <Search onSearch={this.handleSearch}/>
           </header>
           <main>
             <section>
               {loading && <div>Loading...</div>}
               {error && <div>Error: {error.message}</div>}
-              <p>{topic}</p>
+              <p>Results for: {topic}</p>
             </section>
             <Paging
               totalItems={totalItems}
