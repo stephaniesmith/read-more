@@ -37,7 +37,7 @@ export default class App extends Component {
     };
 
     render() {
-      const { topic, loading, error, items } = this.state;
+      const { topic, loading, error, page, perPage, totalItems, items } = this.state;
 
       return (
         <div>
@@ -51,7 +51,11 @@ export default class App extends Component {
               {error && <div>Error: {error.message}</div>}
               <p>{topic}</p>
             </section>
-            <Paging/>
+            <Paging
+              totalItems={totalItems}
+              page={page}
+              perPage={perPage}
+            />
             <Books items={items}/>
           </main>
         </div>
