@@ -7,6 +7,7 @@ export default class App extends Component {
     
     state = {
       topic: '',
+      loading: false,
       error: null,
       page: 1,
       perPage: 20,
@@ -17,13 +18,16 @@ export default class App extends Component {
     searchBooks = () => {
       const { topic, page, perPage } = this.state;
 
+      this.setState({ loading: true });
+
       search({ topic }, { page, perPage })
         .then(({ items, totalItems }) => {
           this.setState({ items, totalItems, error: null });
-          console.log('ITEMS!!!', items);
         }, error => {
           this.setState({ error });
-        });
+        })
+        .then(() => this.setState({ loading: false }));
+
     };
 
     handleSearch = ({ search }) => {
@@ -31,15 +35,20 @@ export default class App extends Component {
     };
 
     render() {
-      const { topic, page, perPage, totalItems, items } = this.state;
+      const { topic, loading, error, items } = this.state;
 
       return (
         <div>
           <header>
-            <p>Hello World</p>
+            <p>Find a Book</p>
             <Search onSearch={this.handleSearch}/>
           </header>
           <main>
+            <section>
+              {loading && <div>Loading...</div>}
+              {error && <div>Error: {error.message}</div>}
+              <p>{topic}</p>
+            </section>
             <Books items={items}/>
           </main>
         </div>
