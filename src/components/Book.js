@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 
 export default class Book extends Component {
+    
   render() {
+    const { volumeInfo } = this.prop.book;
+
     return (
-      <li>BOOK!</li>
+      <li>{volumeInfo.title}</li>
     );
   }
 }
