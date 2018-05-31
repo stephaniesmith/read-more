@@ -12,7 +12,7 @@ export default class App extends Component {
       loading: false,
       error: null,
       page: 1,
-      perPage: 20,
+      perPage: 10,
       totalItems: 0,
       items: []
     };
@@ -33,7 +33,11 @@ export default class App extends Component {
     };
 
     handleSearch = ({ search }) => {
-      this.setState({ topic: search }, this.searchBooks);
+      this.setState({ topic: search, page: 1 }, this.searchBooks);
+    };
+
+    handlePage = ({ page }) => {
+      this.setState({ page }, this.searchBooks);
     };
 
     render() {
@@ -55,6 +59,7 @@ export default class App extends Component {
               totalItems={totalItems}
               page={page}
               perPage={perPage}
+              onPage={this.handlePage}
             />
             <Books items={items}/>
           </main>
