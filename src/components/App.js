@@ -6,7 +6,7 @@ import Books from './Books';
 export default class App extends Component {
     
     state = {
-      volume: '',
+      topic: '',
       page: 1,
       perPage: 20,
       totalItems: 0,
@@ -14,20 +14,25 @@ export default class App extends Component {
     };
 
     searchBooks = () => {
-      const { volume, page, perPage } = this.state;
+      const { topic, page, perPage } = this.state;
 
-      search({ volume }, { page, perPage })
+      search({ topic }, { page, perPage })
         .then(({ items, totalItems }) => {
-            this.setState({ items, totalItems });
+          this.setState({ items, totalItems });
+          console.log(items);
         });
     };
+
+    handleSearch = ({ search }) => {
+        this.setState({ topic: search }, this.searchBooks);
+      };
 
     render() {
       return (
         <div>
           <header>
             <p>Hello World</p>
-            <Search/>
+            <Search onSearch={this.handleSearch}/>
           </header>
           <main>
             <Books/>
