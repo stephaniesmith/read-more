@@ -19,15 +19,17 @@ export default class App extends Component {
       search({ topic }, { page, perPage })
         .then(({ items, totalItems }) => {
           this.setState({ items, totalItems });
-          console.log(items);
+          console.log('ITEMS!!!', items);
         });
     };
 
     handleSearch = ({ search }) => {
-        this.setState({ topic: search }, this.searchBooks);
-      };
+      this.setState({ topic: search }, this.searchBooks);
+    };
 
     render() {
+      const { topic, page, perPage, totalItems, items } = this.state;
+
       return (
         <div>
           <header>

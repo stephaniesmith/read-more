@@ -20,7 +20,7 @@ export default class Search extends Component {
 
     return (
       <form onSubmit={event => this.handleSubmit(event)}>
-        <input placeholder="Search" onChange={this.handelChange}/>
+        <input placeholder="Search" value={search} onChange={this.handleChange}/>
         <button>Search</button>
       </form>
     );
