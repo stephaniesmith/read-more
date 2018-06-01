@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class Header extends Component {
     
@@ -8,7 +8,12 @@ export default class Header extends Component {
     return (
       <div>
         <h1>Find a Book</h1>
-        <p>HEADER!</p>
+        <nav>
+            <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/search" >Search</Link></li>
+            </ul>
+        </nav>
       </div>
     );
   }
