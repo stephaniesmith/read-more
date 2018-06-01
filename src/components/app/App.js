@@ -46,7 +46,6 @@ export default class App extends Component {
       return (
         <div>
           <header>
-            <h1>Find a Book</h1>
             <Header/>
             <Search onSearch={this.handleSearch}/>
           </header>
