@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { search } from '../services/booksApi'
-import Search from './Search';
-import Books from './Books';
-import Paging from './Paging';
+import { search } from '../../services/booksApi'
+import Header from './Header';
+import Search from '../Search';
+import Books from '../Books';
+import Paging from '../Paging';
 
 export default class App extends Component {
     
@@ -46,6 +47,7 @@ export default class App extends Component {
         <div>
           <header>
             <h1>Find a Book</h1>
+            <Header/>
             <Search onSearch={this.handleSearch}/>
           </header>
           <main>
