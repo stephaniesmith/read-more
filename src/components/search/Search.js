@@ -23,6 +23,7 @@ export default class Search extends Component {
         <input placeholder="Search" value={search} onChange={this.handleChange}/>
         <button>Search</button>
       </form>
+      // <p>THIS IS A SEARCH</p>
     );
   }
 }
