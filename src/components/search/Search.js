@@ -78,10 +78,7 @@ export default class Search extends Component {
       <div>
         <SearchForm searchTerm={searchTerm} onSearch={this.handleSearch}/>
         {error && <div>{error}</div>}
-        {(!error && books) && <Books items={books}/>}
-        <ul>
-          <Books/>
-        </ul>
+        {(!error && books) && <Books books={books}/>}
       </div>
     );
   }
