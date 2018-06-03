@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import SearchForm from './SearchForm';
 import Books from '../books/Books';
 import { search } from '../../services/booksApi';
-import PropTypes from 'prop-types';
 import queryString from 'query-string';
+import Paging from '../books/Paging';
 
 const getSearch = location => location ? location.search : '';
 
@@ -78,7 +79,8 @@ export default class Search extends Component {
       <div>
         <SearchForm searchTerm={searchTerm} onSearch={this.handleSearch}/>
         {error && <div>{error}</div>}
-        {(!error && books) && <Books books={books} totalBooks={totalBooks}/>}
+        {(!error && totalBooks) && <Paging totalBooks={totalBooks}/>}
+        {(!error && books) && <Books books={books}/>}
       </div>
     );
   }
