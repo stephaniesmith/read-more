@@ -31,3 +31,8 @@ export function search(term) {
   const url = `${BASE_URL}/volumes?q=${term}`;
   return get(url);
 }
+
+export function getBook(id) {
+  const url = `${BASE_URL}/volumes/${id}`;
+  return get(url);
+}
