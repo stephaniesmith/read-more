@@ -6,19 +6,21 @@ export default class Book extends Component {
 
   static propTypes = {
     id: PropTypes.string,
-    title: PropTypes.string
+    volumeInfo: PropTypes.object
   };
     
   render() {
-    const { title } = this.props.book.volumeInfo;
+    const { id, volumeInfo } = this.props;
+    const { title, imageLinks, authors, description } = volumeInfo;
     // const { title, imageLinks, authors, description, } = this.props.book.volumeInfo;
 
     return (
       <li>
         {title && <h3>Title: {title}</h3>}
-        {/* {imageLinks.smallThumbnail && <img src={imageLinks.smallThumbnail}/>}
+        {imageLinks.smallThumbnail && <img src={imageLinks.smallThumbnail}/>}
         {authors && <p>Author: {authors[0]}</p>}
-        {description && <p>{description}</p>} */}
+        {description && <p>{description}</p>}
+        {id && <p>{id}</p>}
       </li>
     );
   }
