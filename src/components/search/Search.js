@@ -17,12 +17,12 @@ export default class Search extends Component {
   
   state = {
     searchTerm: '',
-    error: null,
     books: null,
-    page: 1,
-    perPage: 10,
+    error: null,
     totalBooks: null,
-    loading: false
+    loading: false,
+    page: 1,
+    perPage: 10
   };
 
   componentDidMount() {
@@ -63,14 +63,14 @@ export default class Search extends Component {
   };
   
   render() {
-    const { searchTerm, books, error, totalBooks, loading } = this.state;
+    const { searchTerm, books, error, totalBooks, loading, page, perPage } = this.state;
 
     return (
       <div>
         <SearchForm searchTerm={searchTerm} onSearch={this.handleSearch}/>
         {loading && <div>Loading...</div>}
         {error && <div>{error}</div>}
-        {(!error && totalBooks) && <Paging totalBooks={totalBooks}/>}
+        {(!error && totalBooks) && <Paging totalBooks={totalBooks} page={page} perPage={perPage}/>}
         {(!error && books) && <Books books={books}/>}
       </div>
     );
