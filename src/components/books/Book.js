@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class Book extends Component {
 
@@ -12,15 +12,13 @@ export default class Book extends Component {
   render() {
     const { id, volumeInfo } = this.props;
     const { title, imageLinks, authors, description } = volumeInfo;
-    // const { title, imageLinks, authors, description, } = this.props.book.volumeInfo;
 
     return (
       <li>
-        {title && <h3>Title: {title}</h3>}
+        {title && <Link to={`/books/${id}`}><h3>Title: {title}</h3></Link>}
         {imageLinks.smallThumbnail && <img src={imageLinks.smallThumbnail}/>}
         {authors && <p>Author: {authors[0]}</p>}
         {description && <p>{description}</p>}
-        {id && <p>{id}</p>}
       </li>
     );
   }
