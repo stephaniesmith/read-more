@@ -55,7 +55,9 @@ export default class App extends Component {
             <Switch>
               <Route exact path="/" component={Home}/>
               <Route path="/search" component={Search}/>
-              <Route path="/books/:id" component={BookDetail}/>
+              <Route path="/books/:id" render={({ match, history }) => {
+                return <BookDetail id={match.params.id} history={history}/>;
+              }}/>
             </Switch>
             {/* <section>
                 {loading && <div>Loading...</div>}
