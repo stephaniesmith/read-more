@@ -31,8 +31,8 @@ export default class Search extends Component {
 
   componentWillReceiveProps({ location }) {
     const next = getSearch(location);
-    const current = getSearch(this.props.location);
-    if(current === next) return;
+    // const current = getSearch(this.props.location);
+    // if(current === next) return;
     this.searchFormQuery(next);
   }
 
@@ -61,6 +61,17 @@ export default class Search extends Component {
       search: searchTerm ? queryString.stringify({ search: searchTerm }) : ''
     });
   };
+
+  handlePaging = current => {
+    console.log(this.state.page);
+    this.setState({ error: null });
+    this.setState({ page: current }, () => {
+      const { searchTerm } = this.state;
+      this.props.history.push({
+        search: searchTerm ? queryString.stringify({ search: searchTerm }) : ''
+      });
+    });
+  };
   
   render() {
     const { searchTerm, books, error, totalBooks, loading, page, perPage } = this.state;
@@ -70,7 +81,7 @@ export default class Search extends Component {
         <SearchForm searchTerm={searchTerm} onSearch={this.handleSearch}/>
         {loading && <div>Loading...</div>}
         {error && <div>{error}</div>}
-        {(!error && totalBooks) && <Paging totalBooks={totalBooks} page={page} perPage={perPage}/>}
+        {(!error && totalBooks) && <Paging totalBooks={totalBooks} page={page} perPage={perPage} onPaging={this.handlePaging}/>}
         {(!error && books) && <Books books={books}/>}
       </div>
     );
