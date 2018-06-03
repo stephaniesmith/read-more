@@ -15,8 +15,8 @@ export default class Books extends Component {
     return (
       <ul>
         {/* <li>BOOKS!</li> */}
-        {books.map((book, i) => (
-          <Book key={i} {...book}/>
+        {books.map(book => (
+          <Book key={book.id} {...book}/>
         ))}
       </ul>
     );
