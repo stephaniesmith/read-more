@@ -15,20 +15,25 @@ export default class BookDetail extends Component {
 
   componentDidMount() {
     getBook(this.props.id)
-      .then(book => this.setState({ book }));
+      .then(book => {
+        this.setState({ book });
+        console.log('BOOKDIDMOUNT!!!', book);
+      });
   }
     
   render() {
-    const { volumeInfo } = this.props.book;
-    const { title, imageLinks, authors, description } = volumeInfo;
+    const { book } = this.props;
+    console.log('BOOK!!!', book);
+    // const { volumeInfo } = book;
+    // const { title, imageLinks, authors, description } = volumeInfo;
 
     return (
       <div>
         <p>Book Detail!!!</p>
-        {title && <h3>Title: {title}</h3>}
-        {imageLinks.smallThumbnail && <img src={imageLinks.smallThumbnail}/>}
+        {/* {book.id && <h3>Title: {book.id}</h3>} */}
+        {/* {imageLinks.smallThumbnail && <img src={imageLinks.smallThumbnail}/>}
         {authors && <p>Author: {authors[0]}</p>}
-        {description && <p>{description}</p>}
+        {description && <p>{description}</p>} */}
       </div>
     );
   }
