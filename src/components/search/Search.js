@@ -19,9 +19,10 @@ export default class Search extends Component {
     searchTerm: '',
     error: null,
     books: null,
-    // page: 1,
-    // perPage: 10,
-    totalBooks: null
+    page: 1,
+    perPage: 10,
+    totalBooks: null,
+    loading: false
   };
 
   componentDidMount() {
@@ -37,16 +38,20 @@ export default class Search extends Component {
 
   searchFormQuery(query) {
     const { search: searchTerm } = queryString.parse(query);
+    const { page, perPage } = this.state;
     this.setState({ searchTerm });
     if(!searchTerm) return;
 
-    search(searchTerm)
+    this.setState({ loading: true });
+
+    search(searchTerm, page, perPage)
       .then(({ items, totalItems }) => {
         this.setState({ books: items, totalBooks: totalItems });
       })
       .catch(error => {
         this.setState({ error });
-      });
+      })
+      .then(this.setState({ loading: false }));
   }
 
   handleSearch = searchTerm => {
@@ -56,28 +61,14 @@ export default class Search extends Component {
       search: searchTerm ? queryString.stringify({ search: searchTerm }) : ''
     });
   };
-
-  // searchBooks = () => {
-  //   const { searchTerm, page, perPage } = this.state;
-
-  //   this.setState({ loading: true });
-
-  //   search({ searchTerm }, { page, perPage })
-  //     .then(({ items, totalItems }) => {
-  //       this.setState({ items, totalItems, error: null });
-  //     }, error => {
-  //       this.setState({ error });
-  //     })
-  //     .then(() => this.setState({ loading: false }));
-
-  // }
   
   render() {
-    const { searchTerm, books, error, totalBooks } = this.state;
+    const { searchTerm, books, error, totalBooks, loading } = this.state;
 
     return (
       <div>
         <SearchForm searchTerm={searchTerm} onSearch={this.handleSearch}/>
+        {loading && <div>Loading...</div>}
         {error && <div>{error}</div>}
         {(!error && totalBooks) && <Paging totalBooks={totalBooks}/>}
         {(!error && books) && <Books books={books}/>}
