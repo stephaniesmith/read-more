@@ -40,8 +40,8 @@ export default class Search extends Component {
     if(!searchTerm) return;
 
     search(searchTerm)
-      .then(({ Search }) => {
-        this.setState({ books: Search });
+      .then(({ items }) => {
+        this.setState({ books: items });
       })
       .catch(error => {
         this.setState({ error });
