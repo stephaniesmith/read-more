@@ -17,7 +17,6 @@
 // }
 
 const BASE_URL = 'https://www.googleapis.com/books/v1';
-const VOLUMES_URL = `${BASE_URL}/volumes?`;
 
 const get = url => fetch(url)
   .then(response => response.json())
@@ -29,6 +28,6 @@ export function checkResponseData(response) {
 }
 
 export function search(term) {
-  const url = `${VOLUMES_URL}&q=${term}`;
+  const url = `${BASE_URL}/volumes?q=${term}`;
   return get(url);
 }
