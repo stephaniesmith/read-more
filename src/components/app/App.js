@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './Header';
 import Home from './Home';
 import Search from '../search/Search';
+import BookDetail from '../books/BookDetail';
 // import Books from '../Books';
 // import Paging from '../Paging';
 
@@ -54,6 +55,7 @@ export default class App extends Component {
             <Switch>
               <Route exact path="/" component={Home}/>
               <Route path="/search" component={Search}/>
+              <Route path="/books/:id" component={BookDetail}/>
             </Switch>
             {/* <section>
                 {loading && <div>Loading...</div>}
