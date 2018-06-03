@@ -3,10 +3,15 @@ import PropTypes from 'prop-types';
 
 export default class Search extends Component {
   
-  state = {
+  static propTypes = {
     searchTerm: PropTypes.string,
+    onSearch: PropTypes.func.isRequired
   };
 
+  state = {
+    current: this.props.searchTerm || '',
+  };
+  
   handleChange = ({ target }) => {
     this.setState({ search: target.value });
   };
