@@ -12,7 +12,11 @@ export default class Search extends Component {
     current: this.props.searchTerm || '',
   };
 
-
+  componentWillReceiveProps({ searchTerm }) {
+    if(searchTerm !== this.state.current) {
+      this.setState({ current: searchTerm || '' });
+    }
+  }
   
   handleChange = ({ target }) => {
     this.setState({ current: target.value });
