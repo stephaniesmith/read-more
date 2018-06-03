@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Search extends Component {
   
   state = {
-    search: ''
+    searchTerm: PropTypes.string,
   };
 
   handleChange = ({ target }) => {
@@ -12,15 +13,21 @@ export default class Search extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onSearch(this.state);
+    this.callSearch();
   };
+
+  callSearch() {
+    const { current } = this.state;
+    if(!current) return;
+    this.props.onSearch(current);
+  }
   
   render() {
-    const { search } = this.state;
+    const { current } = this.state;
 
     return (
-      <form onSubmit={event => this.handleSubmit(event)}>
-        <input placeholder="Search" value={search} onChange={this.handleChange}/>
+      <form onSubmit={this.handleSubmit}>
+        <input placeholder="Search" value={current} onChange={this.handleChange}/>
         <button>Search</button>
       </form>
     );
