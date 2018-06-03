@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Books extends Component {
+
+  static propTypes = {
+    totalBooks: PropTypes.number,
+  };
 
   handlePage(increment) {
     const { page, onPage } = this.props;
@@ -8,11 +13,11 @@ export default class Books extends Component {
   }
 
   render() {
-    const { totalItems, page, perPage } = this.props;
+    const { totalBooks, page, perPage } = this.props;
 
-    if(!totalItems) return <div>No results found</div>;
+    if(!totalBooks) return <div>No results found</div>;
 
-    const totalPages = Math.ceil(totalItems / perPage);
+    const totalPages = Math.ceil(totalBooks / perPage);
     return (
       <div>
         <p>Page {page} of {totalPages}</p>

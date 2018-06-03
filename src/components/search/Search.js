@@ -20,7 +20,7 @@ export default class Search extends Component {
     books: null,
     // page: 1,
     // perPage: 10,
-    // totalItems: null
+    totalBooks: null
   };
 
   componentDidMount() {
@@ -40,8 +40,8 @@ export default class Search extends Component {
     if(!searchTerm) return;
 
     search(searchTerm)
-      .then(({ items }) => {
-        this.setState({ books: items });
+      .then(({ items, totalItems }) => {
+        this.setState({ books: items, totalBooks: totalItems });
       })
       .catch(error => {
         this.setState({ error });
@@ -72,13 +72,13 @@ export default class Search extends Component {
   // }
   
   render() {
-    const { searchTerm, books, error } = this.state;
+    const { searchTerm, books, error, totalBooks } = this.state;
 
     return (
       <div>
         <SearchForm searchTerm={searchTerm} onSearch={this.handleSearch}/>
         {error && <div>{error}</div>}
-        {(!error && books) && <Books books={books}/>}
+        {(!error && books) && <Books books={books} totalBooks={totalBooks}/>}
       </div>
     );
   }
