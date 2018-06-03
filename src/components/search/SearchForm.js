@@ -11,9 +11,11 @@ export default class Search extends Component {
   state = {
     current: this.props.searchTerm || '',
   };
+
+
   
   handleChange = ({ target }) => {
-    this.setState({ search: target.value });
+    this.setState({ current: target.value });
   };
 
   handleSubmit = event => {
