@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchForm renders as designed 1`] = `
+<form onSubmit={[Function]}>
+    <input placeholder="Search" value="" onChange={[Function]}/>
+    <button>Search</button>
+</form>
+`;
+
+exports[`SearchForm renders as designed 1`] = `
+<form onSubmit={[Function]}>
+    <input placeholder="Search" value="gone with the wind" onChange={[Function]}/>
+    <button>Search</button>
+</form>
+`;
+
