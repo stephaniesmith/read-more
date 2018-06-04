@@ -31,8 +31,8 @@ export default class Search extends Component {
 
   componentWillReceiveProps({ location }) {
     const next = getSearch(location);
-    // const current = getSearch(this.props.location);
-    // if(current === next) return;
+    const current = getSearch(this.props.location);
+    if(current === next) return;
     this.searchFormQuery(next);
   }
 
@@ -50,26 +50,38 @@ export default class Search extends Component {
       })
       .catch(error => {
         this.setState({ error });
-      })
-      .then(this.setState({ loading: false }));
+      });
+
+    this.setState({ loading: false });
   }
 
-  handleSearch = searchTerm => {
+  makeSearch = () => {
     this.setState({ error: null });
+    const { searchTerm, page } = this.state;
+
+    const query = {
+      search: searchTerm || '',
+      page: page || 1
+    };
 
     this.props.history.push({
-      search: searchTerm ? queryString.stringify({ search: searchTerm }) : ''
+      search: queryString.stringify(query)
     });
   };
 
-  handlePaging = current => {
-    this.setState({ error: null });
-    this.setState({ page: current }, () => {
-      const { searchTerm } = this.state;
-      this.props.history.push({
-        search: searchTerm ? queryString.stringify({ search: searchTerm }) : ''
-      });
-    });
+  handleSearch = searchTerm => {
+    this.setState({
+      error: null,
+      searchTerm,
+      Paging: 1
+    }, this.makeSearch);
+  };
+
+  handlePaging = page => {
+    this.setState({
+      error: null,
+      page
+    }, this.makeSearch);
   };
   
   render() {
