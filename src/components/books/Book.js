@@ -16,7 +16,7 @@ export default class Book extends Component {
     return (
       <li>
         {title && <Link to={`/books/${id}`}><h3>Title: {title}</h3></Link>}
-        {imageLinks.smallThumbnail && <img src={imageLinks.smallThumbnail}/>}
+        {imageLinks && imageLinks.smallThumbnail && <img src={imageLinks.smallThumbnail}/>}
         {authors && <p>Author: {authors[0]}</p>}
       </li>
     );
