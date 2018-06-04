@@ -16,7 +16,7 @@ export default class BookDetail extends Component {
   componentDidMount() {
     getBook(this.props.id)
       .then(book => {
-        this.setState({ book });
+        this.setState({ book: book.volumeInfo });
       });
   }
     
@@ -25,18 +25,21 @@ export default class BookDetail extends Component {
 
     if(book === null) return null;
 
+    const { title, imageLinks, authors, description } = book;
+
     return (
       <div>
         <p>Book Detail!!!</p>
-        {book.volumeInfo.title && <h3>Title: {book.volumeInfo.title}</h3>}
-        {!book.volumeInfo.title && <h3>Title: Unavailable</h3>}
-        {book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail && <img src={book.volumeInfo.imageLinks.smallThumbnail}/>}
-        {!book.volumeInfo.imageLinks && <img src={'https://gangarams.com/image/cache/placeholder-250x250.png'}/>}
-        {book.volumeInfo.authors && <p>Author: {book.volumeInfo.authors[0]}</p>}
-        {!book.volumeInfo.authors && <p>Author: Unavailable</p>}
-        {book.volumeInfo.description && <p>{book.volumeInfo.description}</p>}
-        {!book.volumeInfo.description && <p>Unavailable</p>}
+        {title && <h3>Title: {title}</h3>}
+        {!title && <h3>Title: Unavailable</h3>}
+        {imageLinks && imageLinks.smallThumbnail && <img src={imageLinks.smallThumbnail}/>}
+        {!imageLinks && <img src={'https://gangarams.com/image/cache/placeholder-250x250.png'}/>}
+        {authors && <p>Author: {authors[0]}</p>}
+        {!authors && <p>Author: Unavailable</p>}
+        {description && <p>{description}</p>}
+        {!description && <p>Unavailable</p>}
       </div>
     );
   }
+
 }
