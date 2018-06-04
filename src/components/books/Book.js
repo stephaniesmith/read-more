@@ -11,14 +11,13 @@ export default class Book extends Component {
     
   render() {
     const { id, volumeInfo } = this.props;
-    const { title, imageLinks, authors, description } = volumeInfo;
+    const { title, imageLinks, authors } = volumeInfo;
 
     return (
       <li>
         {title && <Link to={`/books/${id}`}><h3>Title: {title}</h3></Link>}
         {imageLinks.smallThumbnail && <img src={imageLinks.smallThumbnail}/>}
         {authors && <p>Author: {authors[0]}</p>}
-        {description && <p>{description}</p>}
       </li>
     );
   }
