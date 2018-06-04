@@ -10,18 +10,19 @@ export default class BookDetail extends Component {
   };
 
   state = {
-    book: null
+    book: null,
+    html: null
   };
 
   componentDidMount() {
     getBook(this.props.id)
       .then(book => {
-        this.setState({ book: book.volumeInfo });
+        this.setState({ book: book.volumeInfo, html: { __html: book.volumeInfo.description } });
       });
   }
     
   render() {
-    const { book } = this.state;
+    const { book, html } = this.state;
 
     if(book === null) return null;
 
@@ -36,7 +37,7 @@ export default class BookDetail extends Component {
         {!imageLinks && <img src={'https://gangarams.com/image/cache/placeholder-250x250.png'}/>}
         {authors && <p>Author: {authors[0]}</p>}
         {!authors && <p>Author: Unavailable</p>}
-        {description && <p>{description}</p>}
+        {description && <p dangerouslySetInnerHTML={html}></p>}
         {!description && <p>Unavailable</p>}
       </div>
     );
