@@ -63,7 +63,6 @@ export default class Search extends Component {
   };
 
   handlePaging = current => {
-    console.log(this.state.page);
     this.setState({ error: null });
     this.setState({ page: current }, () => {
       const { searchTerm } = this.state;
