@@ -31,14 +31,10 @@ export default class BookDetail extends Component {
     return (
       <div>
         <p>Book Detail!!!</p>
-        {title && <h3>Title: {title}</h3>}
-        {!title && <h3>Title: Unavailable</h3>}
-        {imageLinks && imageLinks.smallThumbnail && <img src={imageLinks.smallThumbnail}/>}
-        {!imageLinks && <img src={'https://gangarams.com/image/cache/placeholder-250x250.png'}/>}
-        {authors && <p>Author: {authors[0]}</p>}
-        {!authors && <p>Author: Unavailable</p>}
-        {description && <p dangerouslySetInnerHTML={html}></p>}
-        {!description && <p>Unavailable</p>}
+        {title ? <h3>Title: {title}</h3> : <h3>Title: Unavailable</h3>}
+        {imageLinks && imageLinks.smallThumbnail ? <img src={imageLinks.smallThumbnail}/> : <img src={'https://gangarams.com/image/cache/placeholder-250x250.png'}/>}
+        {authors ? <p>Author: {authors[0]}</p> : <p>Author: Unavailable</p>}
+        {description ? <p dangerouslySetInnerHTML={html}></p> : <p>Unavailable</p>}
       </div>
     );
   }
