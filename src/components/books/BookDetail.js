@@ -29,9 +29,13 @@ export default class BookDetail extends Component {
       <div>
         <p>Book Detail!!!</p>
         {book.volumeInfo.title && <h3>Title: {book.volumeInfo.title}</h3>}
-        {book.volumeInfo.imageLinks.smallThumbnail && <img src={book.volumeInfo.imageLinks.smallThumbnail}/>}
+        {!book.volumeInfo.title && <h3>Title: Unavailable</h3>}
+        {book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail && <img src={book.volumeInfo.imageLinks.smallThumbnail}/>}
+        {!book.volumeInfo.imageLinks && <img src={'https://gangarams.com/image/cache/placeholder-250x250.png'}/>}
         {book.volumeInfo.authors && <p>Author: {book.volumeInfo.authors[0]}</p>}
+        {!book.volumeInfo.authors && <p>Author: Unavailable</p>}
         {book.volumeInfo.description && <p>{book.volumeInfo.description}</p>}
+        {!book.volumeInfo.description && <p>Unavailable</p>}
       </div>
     );
   }
