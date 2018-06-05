@@ -92,6 +92,7 @@ export default class Search extends Component {
         <SearchForm searchTerm={searchTerm} onSearch={this.handleSearch}/>
         {loading && <div>Loading...</div>}
         {error && <div>{error}</div>}
+        {searchTerm && <p>Results for: {searchTerm}</p>}
         {(!error && totalBooks) && <Paging totalBooks={totalBooks} page={page} perPage={perPage} onPaging={this.handlePaging}/>}
         {(!error && books) && <Books books={books}/>}
       </div>
