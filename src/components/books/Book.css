@@ -1,0 +1,44 @@
+:local(.book) {
+    margin: 5px;
+    padding: 10px 5px;
+    border: 2px solid black;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    min-height: 275px;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    h3 {
+        margin: 0px;
+        padding: 0px;
+        line-height: 2em;
+    }
+
+    p {
+        margin: 0px;
+        padding: 0px;
+        line-height: 1em;
+    }
+
+    img {
+        filter: grayscale(90%);
+        transition-property: filter;
+        transition-duration: 1s; 
+        margin-top: 10px;
+    }
+
+    img:hover {
+        filter: none;
+    }
+
+    a:active {
+        filter: blur(5px);
+    }
+}

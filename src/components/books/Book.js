@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import styles from './Book.css';
 
 export default class Book extends Component {
 
@@ -14,13 +15,17 @@ export default class Book extends Component {
     const { title, imageLinks, authors } = volumeInfo;
 
     return (
-      <li>
-        {title && <Link to={`/books/${id}`}><h3>Title: {title}</h3></Link>}
-        {!title && <Link to={`/books/${id}`}><h3>Title: Unavailable</h3></Link>}
-        {imageLinks && imageLinks.smallThumbnail && <img src={imageLinks.smallThumbnail}/>}
-        {!imageLinks && <img src='https://gangarams.com/image/cache/placeholder-250x250.png'/>}
-        {authors && <p>Author: {authors[0]}</p>}
-        {!authors && <p>Author: Unavailable</p>}
+      <li className={styles.book}>
+        <Link to={`/books/${id}`}>
+          <div>
+            {title && <h3>{title}</h3>}
+            {!title && <h3>Title Unavailable</h3>}
+            {authors && <p>By {authors[0]}</p>}
+            {!authors && <p>Author Unavailable</p>}
+          </div>
+          {imageLinks && imageLinks.smallThumbnail && <img src={imageLinks.smallThumbnail}/>}
+          {!imageLinks && <img src="https://gangarams.com/image/cache/placeholder-250x250.png"/>}
+        </Link>
       </li>
     );
   }

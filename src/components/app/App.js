@@ -5,6 +5,8 @@ import Home from './Home';
 import Search from '../search/Search';
 import BookDetail from '../books/BookDetail';
 
+import './App.css';
+
 export default class App extends Component {
 
   render() {
@@ -21,11 +23,6 @@ export default class App extends Component {
                 return <BookDetail id={match.params.id} history={history}/>;
               }}/>
             </Switch>
-            {/* <section>
-                {loading && <div>Loading...</div>}
-                {error && <div>Error: {error.message}</div>}
-                <p>Results for: {topic}</p>
-              </section>*/}
           </main>
         </div>
       </Router>

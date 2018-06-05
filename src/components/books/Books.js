@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Book from './Book';
+import styles from './Books.css';
 
 export default class Books extends Component {
 
@@ -12,13 +13,11 @@ export default class Books extends Component {
     const { books } = this.props;
 
     return (
-      <div>
-        <ul>
-          {books.map(book => (
-            <Book key={book.id} {...book}/>
-          ))}
-        </ul>
-      </div>
+      <ul className={styles.books}>
+        {books.map(book => (
+          <Book key={book.id} {...book}/>
+        ))}
+      </ul>
     );
   }
 }

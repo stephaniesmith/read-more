@@ -1,0 +1,7 @@
+:local(.books) {
+    padding: 0px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
