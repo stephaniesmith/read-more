@@ -1,11 +1,11 @@
 :local(.book) {
     margin: 5px;
-    padding: auto;
+    padding: 10px 5px;
     border: 2px solid black;
     width: 200px;
     display: flex;
     justify-content: center;
-    min-height: 300px;
+    min-height: 275px;
 
     div {
         display: flex;
@@ -15,7 +15,13 @@
         padding: 0px;
     }
 
-    h3 p {
+    h3 {
+        margin: 0px;
+        padding: 0px;
+        line-height: 2em;
+    }
+
+    p {
         margin: 0px;
         padding: 0px;
         line-height: 1em;
@@ -25,6 +31,7 @@
         filter: grayscale(90%);
         transition-property: filter;
         transition-duration: 1s; 
+        margin-top: 10px;
     }
 
     img:hover {
