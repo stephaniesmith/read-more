@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+
+:local(.header) {
+    padding: 10px 30px;
+    font-family: Poiret One;
+
+    ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+
+        a {
+            display: flex;
+            align-items: center;
+
+            #search-icon {
+                height: 20px;
+            }
+            
+        }
+    }
+}
