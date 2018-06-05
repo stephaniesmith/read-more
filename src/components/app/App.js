@@ -21,11 +21,6 @@ export default class App extends Component {
                 return <BookDetail id={match.params.id} history={history}/>;
               }}/>
             </Switch>
-            {/* <section>
-                {loading && <div>Loading...</div>}
-                {error && <div>Error: {error.message}</div>}
-                <p>Results for: {topic}</p>
-              </section>*/}
           </main>
         </div>
       </Router>
