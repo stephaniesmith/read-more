@@ -18,7 +18,7 @@ export default class Book extends Component {
         {title && <Link to={`/books/${id}`}><h3>Title: {title}</h3></Link>}
         {!title && <Link to={`/books/${id}`}><h3>Title: Unavailable</h3></Link>}
         {imageLinks && imageLinks.smallThumbnail && <img src={imageLinks.smallThumbnail}/>}
-        {!imageLinks && <img src='https://gangarams.com/image/cache/placeholder-250x250.png'/>}
+        {!imageLinks && <img src="https://gangarams.com/image/cache/placeholder-250x250.png"/>}
         {authors && <p>Author: {authors[0]}</p>}
         {!authors && <p>Author: Unavailable</p>}
       </li>
