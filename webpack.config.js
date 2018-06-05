@@ -39,6 +39,10 @@ module.exports = {
               sourceMap: true,
               importLoaders: 1 
             }
+          },
+          {
+            loader: 'postcss-loader',
+            options: { sourceMap: true }
           }
         ]
       },
