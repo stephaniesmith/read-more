@@ -61,7 +61,7 @@ export default class Search extends Component {
 
     const query = {
       search: searchTerm || '',
-      page: page || 1
+      page: page || 1,
     };
 
     this.props.history.push({

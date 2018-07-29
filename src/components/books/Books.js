@@ -15,7 +15,7 @@ export default class Books extends Component {
     return (
       <ul className={styles.books}>
         {books.map(book => (
-          <Book key={book.id} {...book}/>
+          <Book key={book.id} totalBooks={book.totalBooks} {...book}/>
         ))}
       </ul>
     );
